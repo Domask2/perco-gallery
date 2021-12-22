@@ -47,7 +47,20 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
 
         <Modal active={active} setActive={setActive}>
           {
-            image && <Img src={image.url} alt={image.alt} />
+            image && (
+              <div style={{flexDirection:'column'}}>
+                <Img src={image.url} alt={image.alt} />
+                <p>поставлю сердечко и буду рад</p>
+                <input type="text" placeholder="оставь отзыв" />
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, eius!</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, eius!</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, eius!</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, eius!</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, eius!</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, eius!</p>
+              </div>
+            
+            )
           }
         </Modal>
     </GalleryWrapper>

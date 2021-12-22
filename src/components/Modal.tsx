@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 
@@ -20,7 +20,7 @@ const ModalWrapperUnActive = styled.div`
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: 0.5s;
+  transition:0.5s;
 `;
 
 const ModalWrapperActive = styled(ModalWrapperUnActive)`
@@ -51,6 +51,11 @@ const ModalConteiner = styled.div`
 export const Modal: React.FC<ModalProps> = ({active, setActive, children}) => {
   const ModalWrapper = active ? ModalWrapperActive : ModalWrapperUnActive;
   const ModalContent = active ? ModalContentActive : ModalContentUnActive;
+
+  useEffect(() => {
+    const body = document.querySelector('body');
+    if(body) body.style.overflow = active ? 'hidden' : 'auto';
+  }, [active])
 
   return (
     <ModalWrapper onClick={() => setActive(false)}>
