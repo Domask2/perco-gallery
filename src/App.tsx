@@ -35,7 +35,7 @@ export const App:React.FC = () => {
   useEffect(() => {
     fetchImages()
     .then(res => setImages(res))
-    .catch(err => console.log(err))
+    .catch(err => console.error(err))
     
   }, [])
 

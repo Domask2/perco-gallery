@@ -29,10 +29,7 @@ export const ModalContent: React.FC<ImageProps> = ({ url, alt }) => {
             <ModalContentComment>
                 <Like/>
                 <Comment/>
-            </ModalContentComment>
-            
-
-            
+            </ModalContentComment>  
         </ModalContentWrapper>
     );
 };
