@@ -6,6 +6,7 @@ import styled from "styled-components";
 const CommentWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 320px;
 `;
 
 const CommentContainer = styled.div`
@@ -46,9 +47,10 @@ export const Comment: React.FC = () => {
     <CommentWrapper>
       <CommentContainer>
         {
-          arrayComments.length>0 && arrayComments.map(arr => {
+          arrayComments.length>0 ?  (arrayComments.map(arr => {
             return <CommentItem value={arr} />
-          })
+          })) :
+            <span>клмментриве нет</span>
         }
         
       </CommentContainer>
