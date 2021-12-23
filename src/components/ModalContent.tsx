@@ -14,8 +14,9 @@ export const ModalContentImg = styled.div`
     max-width: 600px;
 `;
 
-export const ModalContentReply = styled.div`
-    dispaly: flex;
+export const ModalContentComment = styled.div`
+    display: flex;
+    flex-direction: column;
 `;
 
 export const ModalContent: React.FC<ImageProps> = ({ url, alt }) => {
@@ -25,10 +26,10 @@ export const ModalContent: React.FC<ImageProps> = ({ url, alt }) => {
                 <Img src={url} alt={alt} />
             </ModalContentImg>
 
-            <ModalContentReply>
+            <ModalContentComment>
                 <Like/>
                 <Comment/>
-            </ModalContentReply>
+            </ModalContentComment>
             
 
             

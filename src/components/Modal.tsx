@@ -31,7 +31,6 @@ const ModalWrapperActive = styled(ModalWrapperUnActive)`
 const ModalContentUnActive = styled.div`
   max-width: 800px;
   height: 660px;
-  padding: 20px;
   border-radius: 2px;
   background-color: #fff;
   transform: scale(0.5);
@@ -48,7 +47,6 @@ const ModalConteiner = styled.div`
   display: flex;
   justify-content: center;
 `;
-
 
 export const Modal: React.FC<ModalProps> = ({ active, setActive, children }) => {
   const ModalWrapper = active ? ModalWrapperActive : ModalWrapperUnActive;
