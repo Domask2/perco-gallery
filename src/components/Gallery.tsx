@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { UnsplashImage, Img } from "./UnsplashImage";
+import { UnsplashImage } from "./UnsplashImage";
 import { ImagesProps } from "../App";
 import { Modal } from "./Modal";
+import { ModalContent } from "./ModalContent";
 
 import styled from "styled-components";
 
@@ -9,7 +10,7 @@ interface GalleryProps {
   images: ImagesProps[];
 }
 
-interface ImageProps {
+export interface ImageProps {
   url: string;
   alt: string;
 }
@@ -39,7 +40,7 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
           <UnsplashImage
             key={image.id}
             handleClick={getImage}
-            url={image.urls.small}
+            url={image.urls.thumb}
             index={image.id}
             alt={image.user.instagram_username}
           />
@@ -47,20 +48,7 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
 
         <Modal active={active} setActive={setActive}>
           {
-            image && (
-              <div style={{flexDirection:'column'}}>
-                <Img src={image.url} alt={image.alt} />
-                <p>поставлю сердечко и буду рад</p>
-                <input type="text" placeholder="оставь отзыв" />
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, eius!</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, eius!</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, eius!</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, eius!</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, eius!</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, eius!</p>
-              </div>
-            
-            )
+            image && <ModalContent url={image.url} alt={image.alt} />
           }
         </Modal>
     </GalleryWrapper>

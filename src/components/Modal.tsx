@@ -29,10 +29,11 @@ const ModalWrapperActive = styled(ModalWrapperUnActive)`
 `;
 
 const ModalContentUnActive = styled.div`
+  max-width: 800px;
+  height: 660px;
   padding: 20px;
   border-radius: 2px;
   background-color: #fff;
-  max-width: 100%;
   transform: scale(0.5);
   transition: 0.5s;
 `;
@@ -43,19 +44,20 @@ const ModalContentActive = styled(ModalContentUnActive)`
 
 const ModalConteiner = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
 `;
 
 
-export const Modal: React.FC<ModalProps> = ({active, setActive, children}) => {
+export const Modal: React.FC<ModalProps> = ({ active, setActive, children }) => {
   const ModalWrapper = active ? ModalWrapperActive : ModalWrapperUnActive;
   const ModalContent = active ? ModalContentActive : ModalContentUnActive;
 
-  useEffect(() => {
-    const body = document.querySelector('body');
-    if(body) body.style.overflow = active ? 'hidden' : 'auto';
-  }, [active])
+  // useEffect(() => {
+  //   const body = document.querySelector('body');
+  //   if(body) body.style.overflow = active ? 'hidden' : 'auto';
+  // }, [active])
 
   return (
     <ModalWrapper onClick={() => setActive(false)}>
