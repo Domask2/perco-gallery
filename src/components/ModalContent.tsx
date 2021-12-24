@@ -1,9 +1,10 @@
 import React from "react";
+
 import { Like } from "./Like";
 import { Img } from "./UnsplashImage";
 import { Comment } from "./Comment"; 
-import { ImageProps } from "./Gallery";
 
+import { ImageProps } from "../types/types";
 import styled from "styled-components";
 
 export const ModalContentWrapper = styled.div`

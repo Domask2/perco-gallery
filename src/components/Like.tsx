@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { FcLike } from 'react-icons/fc';
-
-interface LikeSvgProps {
-  selectlike: boolean;
-}
+import styled from "styled-components";
 
 const LikeWrapper = styled.div`
   padding: 15px 15px;
@@ -13,6 +9,10 @@ const LikeWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
+
+interface LikeSvgProps {
+  selectlike: boolean;
+}
 
 const LikeSvg = styled.div<LikeSvgProps>`
   cursor: pointer;
@@ -37,18 +37,18 @@ const LikeSvg = styled.div<LikeSvgProps>`
 `;
 
 export const Like: React.FC = () => {
-  const [selectLike, setSelectLike] = useState<boolean>(false);
-  const [scoreLike, setScoreLike] = useState<number>(0);
+  const [selectLike, setSelectLike] = useState(false);
+  const [scoreLike, setScoreLike] = useState(0);
 
   const handleLike = () => {
     setSelectLike(!selectLike);
-    selectLike ?  setScoreLike(scoreLike - 1) :  setScoreLike(scoreLike + 1)
+    selectLike ? setScoreLike(scoreLike - 1) : setScoreLike(scoreLike + 1)
   }
 
   return (
     <LikeWrapper >
       <LikeSvg selectlike={selectLike} onClick={handleLike}>
-        <FcLike  /><span>{scoreLike}</span> 
+        <FcLike /><span>{scoreLike}</span>
       </LikeSvg>
     </LikeWrapper>
   );

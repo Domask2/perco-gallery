@@ -2,12 +2,6 @@ import React, { useEffect } from "react";
 import { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 
-interface ModalProps {
-  active: boolean;
-  setActive: Dispatch<SetStateAction<boolean>>;
-  children: React.ReactNode;
-}
-
 const ModalWrapperUnActive = styled.div`
   height: 100vh;
   width: 100vw;
@@ -35,6 +29,12 @@ const ModalContentUnActive = styled.div`
   background-color: #fff;
   transform: scale(0.5);
   transition: 0.5s;
+  @media(max-width: ${({ theme }) => theme.width.large}) {
+    max-width: 700px;
+  }
+  @media(max-width: ${({ theme }) => theme.width.medium}) {
+    max-width: 500px;
+  }
 `;
 
 const ModalContentActive = styled(ModalContentUnActive)`
@@ -48,14 +48,21 @@ const ModalConteiner = styled.div`
   justify-content: center;
 `;
 
+interface ModalProps {
+  active: boolean;
+  setActive: Dispatch<SetStateAction<boolean>>;
+  children: React.ReactNode;
+}
+
 export const Modal: React.FC<ModalProps> = ({ active, setActive, children }) => {
   const ModalWrapper = active ? ModalWrapperActive : ModalWrapperUnActive;
   const ModalContent = active ? ModalContentActive : ModalContentUnActive;
 
-  // useEffect(() => {
-  //   const body = document.querySelector('body');
-  //   if(body) body.style.overflow = active ? 'hidden' : 'auto';
-  // }, [active])
+  // не самое лучшее решение, но для тестового проекта считаю будет достаточно
+  useEffect(() => {
+    const body = document.querySelector('body');
+    if (body) body.style.overflow = active ? 'hidden' : 'auto';
+  }, [active])
 
   return (
     <ModalWrapper onClick={() => setActive(false)}>

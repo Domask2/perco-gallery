@@ -39,7 +39,7 @@ const CommentItemTextAuth = styled.span`
   font-weight: 500;
   font-size: 11px;
   line-height: 1.36;
-  color: #2a5885;
+  color: ${({ theme }) => theme.colors.accent};
   min-height: 1.36em;
   margin-bottom: 10px;
 `;
@@ -48,6 +48,9 @@ const CommentItemTextReply = styled.p`
   width: 240px;
   margin-bottom: 10px;
   font-size: 12px;
+  @media(max-width: ${({ theme }) => theme.width.medium}) {
+    width: 135px; 
+  }
 `;
 
 const CommentItemTextDate = styled.span`
@@ -57,10 +60,11 @@ const CommentItemTextDate = styled.span`
 
 interface CommentItemProps {
   value: string;
+  id: string
   handlerDelete: (value: string) => void;
 }
 
-export const CommentItem: React.FC<CommentItemProps> = ({value, handlerDelete}) => {
+export const CommentItem: React.FC<CommentItemProps> = ({ value, id, handlerDelete }) => {
   return (
     <CommentItemWrapper>
       <CommentItemLogo>
@@ -78,7 +82,7 @@ export const CommentItem: React.FC<CommentItemProps> = ({value, handlerDelete}) 
           </CommentItemTextDate>
         </CommentItemText>
 
-        <CommentItemDelete onClick={() => handlerDelete(value)}>
+        <CommentItemDelete onClick={() => handlerDelete(id)}>
           <MdClose />
         </CommentItemDelete>
       </CommentItemContainer>

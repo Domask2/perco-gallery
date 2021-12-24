@@ -1,19 +1,11 @@
 import React, { useState } from "react";
+
 import { UnsplashImage } from "./UnsplashImage";
-import { ImagesProps } from "../App";
 import { Modal } from "./Modal";
 import { ModalContent } from "./ModalContent";
 
+import { ImageProps, ImagesProps } from '../types/types';
 import styled from "styled-components";
-
-interface GalleryProps {
-  images: ImagesProps[];
-}
-
-export interface ImageProps {
-  url: string;
-  alt: string;
-}
 
 const GalleryWrapper = styled.div`
   max-width: 70rem;
@@ -24,12 +16,16 @@ const GalleryWrapper = styled.div`
   grid-auto-rows: 300px;
 `;
 
+interface GalleryProps {
+  images: ImagesProps[];
+}
+
 export const Gallery: React.FC<GalleryProps> = ({ images }) => {
-  const [active, setActive] = useState<boolean>(false);
+  const [active, setActive] = useState(false);
   const [image, setImange] = useState<ImageProps>();
-  
-  const getImage = (url:string, alt:string) => {
-    setImange({url, alt});
+
+  const getImage = (url: string, alt: string) => {
+    setImange({ url, alt });
     setActive(true);
   }
 
@@ -46,11 +42,11 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
           />
         ))}
 
-        <Modal active={active} setActive={setActive}>
-          {
-            image && <ModalContent url={image.url} alt={image.alt} />
-          }
-        </Modal>
+      <Modal active={active} setActive={setActive}>
+        {
+          image && <ModalContent url={image.url} alt={image.alt} />
+        }
+      </Modal>
     </GalleryWrapper>
   );
 };
