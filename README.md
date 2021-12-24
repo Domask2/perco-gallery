@@ -17,7 +17,3 @@ yarn run dev
 <code><img alt="Type Script" height="40px" src="https://cdn.svgporn.com/logos/typescript-icon.svg" /></code>
 <code><img alt="Styled Components" height="40px" src="https://raw.githubusercontent.com/styled-components/brand/master/styled-components.png" /></code>
 </p>
-
-
-
-

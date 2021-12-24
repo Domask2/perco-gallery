@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Dispatch, SetStateAction } from "react";
+import React, { useEffect, Dispatch, SetStateAction } from "react";
+import { MdClose } from "react-icons/md";
 import styled from "styled-components";
 
 const ModalWrapperUnActive = styled.div`
@@ -15,11 +15,20 @@ const ModalWrapperUnActive = styled.div`
   opacity: 0;
   pointer-events: none;
   transition:0.5s;
+  cursor: pointer;
 `;
 
 const ModalWrapperActive = styled(ModalWrapperUnActive)`
   opacity: 1;
   pointer-events: all;
+`;
+
+const ModalClose = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #fff;
+  font-size:50px;
 `;
 
 const ModalContentUnActive = styled.div`
@@ -29,6 +38,7 @@ const ModalContentUnActive = styled.div`
   background-color: #fff;
   transform: scale(0.5);
   transition: 0.5s;
+  cursor: auto;
   @media(max-width: ${({ theme }) => theme.width.large}) {
     max-width: 700px;
   }
@@ -71,6 +81,9 @@ export const Modal: React.FC<ModalProps> = ({ active, setActive, children }) => 
           {children}
         </ModalConteiner>
       </ModalContent>
+      <ModalClose>
+        <MdClose />
+      </ModalClose>
     </ModalWrapper>
   );
 };
