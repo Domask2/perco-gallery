@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const  fetchImages = async (count = 12) => {
+export const  fetchImages = async (count = 18) => {
   const apiRoot = "https://api.unsplash.com";
   const accessKey = 'FSGH0Ay-umP5SL3DW-gO5JS118eOrqBOaBjNlbZi4kk';
   

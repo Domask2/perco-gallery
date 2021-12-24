@@ -13,9 +13,9 @@ const CommentItemWrapper = styled.div`
 const CommentItemLogo = styled.div`
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 6px;
   svg {
-    font-size: 50px;
+    font-size: 30px;
   }
 `;
 
@@ -23,7 +23,7 @@ const CommentItemContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 6px 6px;
 `;
 
 const CommentItemText = styled.div`
@@ -37,16 +37,17 @@ const CommentItemDelete = styled.div`
 
 const CommentItemTextAuth = styled.span`
   font-weight: 500;
-  font-size: 14.5px;
+  font-size: 11px;
   line-height: 1.36;
   color: #2a5885;
   min-height: 1.36em;
   margin-bottom: 10px;
 `;
 
-const CommentItemTextReply = styled.span`
-width: 200px;
+const CommentItemTextReply = styled.p`
+  width: 240px;
   margin-bottom: 10px;
+  font-size: 12px;
 `;
 
 const CommentItemTextDate = styled.span`
@@ -54,11 +55,12 @@ const CommentItemTextDate = styled.span`
   color: #939393;
 `;
 
-export interface CommentItemProps {
-  value: any
+interface CommentItemProps {
+  value: string;
+  handlerDelete: (value: string) => void;
 }
 
-export const CommentItem: React.FC<CommentItemProps> = ({value}) => {
+export const CommentItem: React.FC<CommentItemProps> = ({value, handlerDelete}) => {
   return (
     <CommentItemWrapper>
       <CommentItemLogo>
@@ -76,7 +78,7 @@ export const CommentItem: React.FC<CommentItemProps> = ({value}) => {
           </CommentItemTextDate>
         </CommentItemText>
 
-        <CommentItemDelete>
+        <CommentItemDelete onClick={() => handlerDelete(value)}>
           <MdClose />
         </CommentItemDelete>
       </CommentItemContainer>
